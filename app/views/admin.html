@@ -1,0 +1,58 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+
+#{menu id:"dashboard"/}
+
+<!--
+<section class="ui segment">
+  #{mainpanel/}
+</section>
+-->
+
+<section class="ui raised segment">
+    <header class="ui header">
+        Todo List
+    </header>
+
+    <!--
+
+  Change the views from item
+
+    <div class="ui bulleted list">
+    #{list items:todolist, as:'todo'}
+        <div class="ui item"> ${todo.title} </div>
+    #{/list}
+    </div>
+
+-->
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Todo</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:todolist, as:'todo'}
+        <tr>
+            <td> ${todo.id} </td>
+            <td> ${todo.title} </td>
+            <!-- <td> <a href="/dashboard/deletetodo/${todo.id} " class="ui tiny red button"> Delete </a> </td> -->
+            <!--<td><button class="ui tiny red button">Delete</button></td> -->
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+
+</section>
+
+<!--
+<form class="ui stacked segment form" action="/dashboard/addtodo" method="POST">
+    <div class="field">
+        <label>Title</label>
+        <input placeholder="Title" type="text" name="title">
+    </div>
+    <button class="ui blue submit button">Add Todo</button>
+</form>
+
+-->

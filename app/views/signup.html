@@ -1,0 +1,63 @@
+#{extends 'main.html' /}
+#{set title:'signup' /}
+#{welcomemenu id:"signup"/}
+
+<div class="ui two column grid basic middle aligned segment">
+    <div class="column">
+        <form class="ui stacked segment form" action="/register" method="POST">
+            <h3 class="ui header">Register</h3>
+            <div class="two fields">
+                <div class="field">
+                    <label>First Name</label>
+                    <input placeholder="First Name" type="text" name="firstname">
+                </div>
+                    <div class="field">
+                        <label>Gender</label>
+                        <!--<input placeholder="Last Name" type="text" name="lastname"> -->
+                        <select name="gender" class="select dropdown">
+                            <option value="UNSPECIFIED">Unspecified</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input placeholder="Email" type="text" name="email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password">
+            </div>
+            <div class="field">
+                <label>Address</label>
+                <input placeholder="Address" type="text" name="address">
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Height</label>
+                    <div class="ui fluid right labeled input">
+                        <input name="Height" required type="number" placeholder="00.00" step="0.01" min="1" max="3" />
+                        <div class="ui basic label">M</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Starting Weight</label>
+                    <div class="ui fluid right labeled input">
+                        <input name="startingWeight" required type="number" placeholder="00.00" step="0.01" min="35" max="250" />
+                        <div class="ui basic label">KG</div>
+                    </div>
+                </div>
+            </div>
+            <button class="ui blue submit button">Submit</button>
+        </form>
+    </div>
+    <div class="column">
+        <img class="ui image" src="/public/images/playgym.jpg">
+    </div>
+
+    <script language="javascript">
+        $('select.dropdown').dropdown();
+
+    </script>
+</div>
