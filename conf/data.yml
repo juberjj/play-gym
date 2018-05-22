@@ -1,20 +1,62 @@
-Todo(t1):
-  title: Make tea
+Assessment(a1):
+  weight: 82
+  chest: 82
+  thigh: 82
+  upperarm: 82
+  waist: 82
+  hips: 82
+  comment:
+  timeStamp: 2018-05-22 15:20:40
+
+Assessment(a2):
+  weight: 42
+  chest: 52
+  thigh: 62
+  upperarm: 72
+  waist: 22
+  hips: 62
+  comment:
+  timeStamp: 2018-05-22 14:00:40
+
+Assessment(a3):
+  weight: 91
+  chest: 92
+  thigh: 93
+  upperarm: 94
+  waist: 95
+  hips: 96
+  comment:
+  timeStamp: 2018-05-22 14:08:40
 
 Member(m1):
-  firstname: homer
-  lastname: simpson
+  name: homer simpson
+  gender: M
   email: homer@simpson.com
   password: secret
+  address: address
+  height: 1.80
+  startingweight: 85.0
+  assessments:
+  - a1
+  - a2
+  - a3
 
 Member(m2):
-  firstname: marge
-  lastname: simpson
+  name: marge simpson
+  gender: F
   email: marge@simpson.com
   password: secret
+  address: Dublin
+  height: 150
+  startingweight: 50
+  assessments:
 
 Member(m3):
-  firstname: Juber
-  lastname: Nunes
+  name: Juber Nunes
+  gender: M
   email: test@test.com
   password: test
+  address: Waterford
+  height: 182
+  startingweight: 88
+  assessments:

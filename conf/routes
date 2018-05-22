@@ -3,19 +3,22 @@
 # ~~~~
 
 # Home page
-GET     /                                       Start.index
-GET     /dashboard                              Dashboard.index
-POST    /dashboard                              Dashboard.addTodo
-GET     /dashboard/{id}/deletetodo/{todoid}     Dashboard.deleteTodo
+GET     /                                                   Start.index
+GET     /dashboard                                          Dashboard.index
+POST    /dashboard                                          Dashboard.addTodo
+GET     /dashboard/{id}/deletetodo/{todoid}                 Dashboard.deleteTodo
 
-GET     /admin                                  Admin.index
+POST    /dashboard/addassessment                            Dashboard.addAssessment
+GET     /dashboard/{id}/deleteassessment/{assessmentid}     Dashboard.deleteAssessment
+
+GET     /admin                                              Admin.index
 
 
-GET     /login                                  Accounts.login
-GET     /signup                                 Accounts.signup
-POST    /register                               Accounts.register
-POST    /authenticate                           Accounts.authenticate
-GET     /logout                                 Accounts.logout
+GET     /login                                              Accounts.login
+GET     /signup                                             Accounts.signup
+POST    /register                                           Accounts.register
+POST    /authenticate                                       Accounts.authenticate
+GET     /logout                                             Accounts.logout
 
 
 

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 public class Todo extends Model{
 
     public String title;
-    public Long id;
+   // public Long id;
 
     public Todo(String title) {
         this.title = title;

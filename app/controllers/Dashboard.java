@@ -1,9 +1,11 @@
 package controllers;
 
+import models.Assessment;
 import models.Member;
 import models.Todo;
 import play.Logger;
 import play.mvc.Controller;
+import utils.GymUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,28 +17,31 @@ public class Dashboard extends Controller
 
       Member member = Accounts.getLoggedInMember();
 
-      List<Todo> todolist = member.todolist;
-      render("dashboard.html", member, todolist);
+      List<Assessment> assessments = member.assessments;
+      Logger.info("Rendering Dashboard " + member.getCurrentBmiCategory());
+      render("dashboard.html", member, assessments);
   }
 
-    public static void addTodo(String title) {
+
+     public static void addAssessment(float weight, float chest, float thigh, float upperarm, float waist, float hips) {
 
         Member member = Accounts.getLoggedInMember();
-        Todo todo = new Todo(title);
-        member.todolist.add(todo);
+        Assessment assessment = new Assessment(weight, chest, thigh, upperarm, waist, hips);
+         member.assessments.add(assessment);
         member.save();
-        Logger.info("Adding Todo" + title);
+        Logger.info("Adding Assessment" + member.name);
         redirect("/dashboard");
 
     }
-    public static void deleteTodo(Long id, Long todoid) {
+
+    public static void deleteAssessment(Long id, Long assessmentid) {
 
         Member member = Member.findById(id);
-        Todo todo = Todo.findById(todoid);
-        member.todolist.remove(todo);
+        Assessment assessment = Assessment.findById(assessmentid);
+        member.assessments.remove(assessment);
         member.save();
-        todo.delete();
-        Logger.info("Deleting " + todo.title);
+        assessment.delete();
+        Logger.info("Deleting " + member.name);
         redirect("/dashboard");
 
     }
