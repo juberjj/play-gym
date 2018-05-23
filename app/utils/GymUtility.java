@@ -24,6 +24,13 @@ public class GymUtility extends Model{
         return bmi;
     }
 
+    public static double calculateBMI(Member member) {
+        float weight = member.getStartingweight();
+        float height = member.getHeight();
+        double bmi = (double) weight / Math.pow(height, 2) ;
+        return bmi;
+    }
+
     /**
      * This static method determines the BMI category that the member belongs to.
      * <p>
@@ -69,6 +76,35 @@ public class GymUtility extends Model{
 
         // member weight and height
         float weightInKg = assessment.getWeight();
+        float heightInInch = metreToInchConversion(member.getHeight());
+        String gender = member.getGender();
+
+        // formula values
+        float baseHeightInInch = 60f; // 5 feet x 12 = 60 inches
+        float baseWeightMale = 50f;
+        float baseWeightFemale = 45.5f;
+        float incrementalWeight = 2.3f;
+
+        // if member is 5 feet or less return 50kg for male and 45.5kg for female
+        if (heightInInch <= baseHeightInInch) {
+            return (gender.equals("M"))
+                    ? (weightInKg == baseWeightMale)
+                    : (weightInKg == baseWeightFemale);
+        }
+
+        // assign correct base weight
+        float baseWeight = (gender.equals("M")) ? baseWeightMale : baseWeightFemale;
+
+        // add 2.3kg for each inch over 5 feet (60 inches)
+        float calculatedIdeal = baseWeight + (incrementalWeight * (heightInInch - baseHeightInInch));
+
+        return (weightInKg > calculatedIdeal - 0.2f && weightInKg < calculatedIdeal + 0.2f);
+    }
+
+    public static boolean isIdealBodyWeight(Member member) {
+
+        // member weight and height
+        float weightInKg = member.getStartingweight();
         float heightInInch = metreToInchConversion(member.getHeight());
         String gender = member.getGender();
 

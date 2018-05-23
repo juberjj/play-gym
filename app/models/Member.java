@@ -81,7 +81,9 @@ public class Member extends Model
 
     public double getCurrentBmi() {
         if (assessments == null || assessments.isEmpty()) {
-            return 0.0d;
+           // return 0.0d;
+            DecimalFormat df = new DecimalFormat("#.#");
+            return Double.valueOf(df.format(GymUtility.calculateBMI(this)));
         }
         DecimalFormat df = new DecimalFormat("#.#");
         return Double.valueOf(df.format(GymUtility.calculateBMI(this, getLatestAssessment())));
@@ -122,9 +124,10 @@ public class Member extends Model
     }
 
     public String getCurrentBmiCategory() {
-        return (assessments == null || assessments.isEmpty())
-                ? "N/A"
-                : GymUtility.determineBMICategory(getCurrentBmi());
+//        return (assessments == null || assessments.isEmpty())
+//                ? "N/A"
+//                : GymUtility.determineBMICategory(getCurrentBmi());
+        return GymUtility.determineBMICategory(getCurrentBmi());
     }
 
     public List<Assessment> getAssessments() {

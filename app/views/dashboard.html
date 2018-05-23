@@ -11,6 +11,7 @@
             <div class="sub header"><b>${member.name}</b></div>
         </h2>
     </div>
+    </div>
     <div class="column center aligned">
         <h2 class="ui icon header">
             <i class="heartbeat icon">&nbsp;<span>${member.getCurrentBmi()}</span></i>
@@ -84,4 +85,5 @@
         #{/list}
         </tbody>
     </table>
+#{list assessments:member.getSortedAssessments()/}
 </section>
