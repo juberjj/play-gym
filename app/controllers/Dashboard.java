@@ -18,7 +18,7 @@ public class Dashboard extends Controller
       Member member = Accounts.getLoggedInMember();
 
       List<Assessment> assessments = member.assessments;
-      Logger.info("Rendering Dashboard " + member.getSortedAssessments());
+      Logger.info("Rendering Dashboard " + member.getLatestAssessment() + "  " + member.getStartingweight());
       render("dashboard.html", member, assessments);
   }
 

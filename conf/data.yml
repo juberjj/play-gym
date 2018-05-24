@@ -5,7 +5,7 @@ Assessment(a1):
   upperarm: 82
   waist: 82
   hips: 82
-  comment:
+  comment: This is a comment
   timeStamp: 2018-05-22 15:20:40
 
 Assessment(a2):
@@ -15,7 +15,7 @@ Assessment(a2):
   upperarm: 72
   waist: 22
   hips: 62
-  comment:
+  comment: Another comment
   timeStamp: 2018-05-22 14:00:40
 
 Assessment(a3):
@@ -25,7 +25,7 @@ Assessment(a3):
   upperarm: 94
   waist: 95
   hips: 96
-  comment:
+  comment: Yet another comment
   timeStamp: 2018-05-22 14:08:40
 
 Member(m1):
@@ -54,9 +54,17 @@ Member(m2):
 Member(m3):
   name: Juber Nunes
   gender: M
-  email: test@test.com
+  email: juber@test.com
   password: test
   address: Waterford
   height: 182
   startingweight: 88
   assessments:
+
+Trainer(t1):
+  name: Arnold
+  gender: M
+  email: arnold@test.com
+  password: test
+  address: Waterford
+  specialty: Personal Trainer

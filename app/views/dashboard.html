@@ -1,16 +1,37 @@
 #{extends 'main.html' /}
 #{set title:'Dashboard' /}
 
-#{menu id:"dashboard"/}
+#{membermenu id:"dashboard"/}
 
 <section class="ui segment">
-<section class="ui raised segment three column stackable grid">
+<section class="ui raised segment four column stackable grid">
     <div class="column center aligned ">
         <h2 class="ui icon header">
             <i class="user icon"></i>
-            <div class="sub header"><b>${member.name}</b></div>
+            <div class="sub header"><b>${member.name.toUpperCase()}</b></div>
         </h2>
     </div>
+    </div>
+    <div class="column center aligned">
+        <h2 class="ui icon header">
+            #{if member.getLatestAssessment() == null}
+                 #{if member.initialIdealBodyWeight() == false}
+                      <i class="red dashboard icon"></i>
+                 #{/if}
+                 #{elseif member.initialIdealBodyWeight() == true}
+                      <i class="green dashboard icon"></i>
+                 #{/elseif}
+            #{/if}
+            #{if member.getLatestAssessment() != null}
+                 #{if member.isIdealBodyWeight()== false}
+                      <i class="red dashboard icon"></i>
+                 #{/if}
+                 #{elseif member.isIdealBodyWeight()== true}
+                      <i class="green dashboard icon"></i>
+                 #{/elseif}
+            #{/if}
+            <div class="sub header"><b>IDEAL WEIGHT INDICATOR</b></div>
+        </h2>
     </div>
     <div class="column center aligned">
         <h2 class="ui icon header">
@@ -69,6 +90,7 @@
             <th>Upper Arm</th>
             <th>Waist</th>
             <th>Hips</th>
+            <th>Comments</th>
         </tr>
         </thead>
         <tbody>
@@ -80,6 +102,7 @@
             <td> ${assessment.upperarm} </td>
             <td> ${assessment.waist} </td>
             <td> ${assessment.hips} </td>
+            <td> ${assessment.comment} </td>
             <!--<td> <a href="/dashboard/${member.id}/deleteassessment/${assessment.id} " class="ui tiny red button"> Delete </a> </td>-->
         </tr>
         #{/list}

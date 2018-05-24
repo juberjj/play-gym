@@ -15,7 +15,7 @@ public class Assessment extends Model {
      public float upperarm;
      public float waist;
      public float hips;
-     //public String comment;
+     public String comment;
      public Date timeStamp;
 
      public Assessment(float weight, float chest, float thigh, float upperarm, float waist, float hips) {
@@ -142,12 +142,12 @@ public class Assessment extends Model {
         this.timeStamp = timeStamp;
     }
 
-//    /**
-//      * @param comment the comment to set
-//      */
-//     public void setComment(String comment) {
-//         this.comment = comment;
-//     }
+    /**
+      * @param comment the comment to set
+      */
+     public void setComment(String comment) {
+         this.comment = comment;
+     }
 
     @Override
     public String toString() {

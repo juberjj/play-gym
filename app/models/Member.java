@@ -10,13 +10,13 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 @Entity
-public class Member extends Model
+public class Member extends Person
 {
-    public String name;
-    public String gender;
-    public String email;
-    public String password;
-    public String address;
+    //public String name;
+    //public String gender;
+    //public String email;
+    //public String password;
+    //public String address;
     public float height;
     public float startingweight;
 
@@ -28,14 +28,14 @@ public class Member extends Model
 
     public Member(String name, String gender, String email, String password, String address, float height, float startingweight)
     {
-        this.name = name;
-        this.gender = gender;
-        this.email = email;
-        this.password = password;
-        this.address = address;
+        super(name, email, address,gender, password);
+        //this.name = name;
+        //this.gender = gender;
+        //this.email = email;
+        //this.password = password;
+        //this.address = address;
         this.height = height;
         this.startingweight = startingweight;
-        //this.assessments = new HashMap<>();
         this.assessments = new ArrayList<>();
     }
 
@@ -59,6 +59,10 @@ public class Member extends Model
     public String getGender() {
 
         return gender;
+    }
+    public String getName(){
+
+        return name;
     }
 
     public float getStartingweight() {
@@ -107,6 +111,40 @@ public class Member extends Model
 
     }
 
+    public boolean isIdealBodyWeight() {
+        return (assessments != null && !assessments.isEmpty()) && GymUtility
+                .isIdealBodyWeight(this, getLatestAssessment());
+    }
+
+    public boolean initialIdealBodyWeight(){
+        return GymUtility.isIdealBodyWeight(this);
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setStartingweight(float startingweight) {
+        this.startingweight = startingweight;
+    }
+
     /**
      * Updates the member starting weight field.
      *
@@ -124,9 +162,6 @@ public class Member extends Model
     }
 
     public String getCurrentBmiCategory() {
-//        return (assessments == null || assessments.isEmpty())
-//                ? "N/A"
-//                : GymUtility.determineBMICategory(getCurrentBmi());
         return GymUtility.determineBMICategory(getCurrentBmi());
     }
 
@@ -156,6 +191,9 @@ public class Member extends Model
     /**
      * @return User-friendly String representing the current Member
      */
+
+
+
 //    @Override
 //    public String toString() {
 //        return super.toString() + "/ Height: " + height + "m" + "/ Starting Weight: " + startWeight + "kg"

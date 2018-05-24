@@ -2,25 +2,36 @@ package models;
 
 import play.db.jpa.Model;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Person extends Model{
-    private String email;
-    private String name;
-    private String address;
-    private String gender;
+    public String email;
+    public String name;
+    public String address;
+    public String gender;
+    public String password;
 
 
-    public Person(String email, String name, String address, String gender) {
+    public Person(String name, String email, String address, String gender, String password) {
 
+
+        this.name = name;
         this.email = email;
-        setName(name);
         this.address = address;
-        setGender(gender);
+        this.gender = gender;
+        this.password = password;
 
     }
 
     //-------
     //getters
     //-------
+
+
+    public boolean checkPassword(String password) {
+        return (this.password.equals(password));
+    }
 
     /**
      * @return returns the persons email
@@ -94,6 +105,12 @@ public class Person extends Model{
             this.name = name.substring(0, 30);
         }
     }
+
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     /**
      * Updates the persons email field
