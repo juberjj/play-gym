@@ -34,26 +34,26 @@ public class Accounts extends Controller
     public static void authenticate(String email, String password){
         Logger.info("Attempting to authenticate with " + email + ":" + password);
 
-//        Member member = Member.findByEmail(email);
-//        if ((member != null) && (member.checkPassword(password) == true)) {
-//            Logger.info("Authentication successful");
-//            session.put("logged_in_Memberid", member.id);
-//            redirect ("/dashboard");
-
-        // identify if Member or Trainer
+        // using instance of in order to distinguish Members and Trainer
         Person person = Member.find("email", email).first();
         person = (person == null) ? Trainer.find("email", email).first() : person;
 
+        Logger.info("Authentication successful " + person);
+
         if (person != null && person.checkPassword(password)) {
-            Logger.info("Authentication successful");
-            session.put("logged_in_Personid", person.id);
-            if (person instanceof Member) redirect("/dashboard");
+            Logger.info("Authentication successful " + person);
+            //session.put("logged_in_Personid", person.id);
+            session.put("logged_in_Memberid", person.id);
+            if (person instanceof Member)
+
+                redirect("/dashboard");
             if (person instanceof Trainer) redirect("/admin");
 
         } else {
             Logger.info("Authentication failed");
             redirect("/login");
         }
+
     }
 
     public static void logout(){
@@ -64,9 +64,12 @@ public class Accounts extends Controller
 
     public static Member getLoggedInMember(){
         Member member = null;
+        Logger.info("Logger " + member);
         if (session.contains("logged_in_Memberid")) {
+            //String memberId = session.get("logged_in_Memberid"); // that was my issue from previous commit
             String memberId = session.get("logged_in_Memberid");
             member = Member.findById(Long.parseLong(memberId));
+
         } else {
             login();
         }
@@ -79,7 +82,7 @@ public class Accounts extends Controller
      */
     public static void settings() {
         Member member = (Member) Accounts.getLoggedInMember();
-        Logger.info(" Member " + Accounts.getLoggedInMember().name);
+        Logger.info(" Member " + Accounts.getLoggedInMember());
         render("settings.html", member);
     }
 

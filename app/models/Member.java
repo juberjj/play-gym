@@ -13,12 +13,13 @@ import java.util.*;
 public class Member extends Person
 {
     //public String name;
-    //public String gender;
-    //public String email;
     //public String password;
-    //public String address;
-    public float height;
-    public float startingweight;
+    //public String email;
+    //public String gender;
+    private String gender;
+    private String address;
+    private float height;
+    private float startingweight;
 
 
    @OneToMany(cascade = CascadeType.ALL)
@@ -28,12 +29,12 @@ public class Member extends Person
 
     public Member(String name, String gender, String email, String password, String address, float height, float startingweight)
     {
-        super(name, email, address,gender, password);
+        super(name, email, password);
         //this.name = name;
-        //this.gender = gender;
+        this.gender = gender;
         //this.email = email;
         //this.password = password;
-        //this.address = address;
+        this.address = address;
         this.height = height;
         this.startingweight = startingweight;
         this.assessments = new ArrayList<>();

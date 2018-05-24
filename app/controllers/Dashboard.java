@@ -2,23 +2,19 @@ package controllers;
 
 import models.Assessment;
 import models.Member;
-import models.Todo;
 import play.Logger;
 import play.mvc.Controller;
-import utils.GymUtility;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Dashboard extends Controller
 {
   public static void index() {
-    Logger.info("Rendering Dashboard");
+    Logger.info("Rendering Dashboard index");
 
       Member member = Accounts.getLoggedInMember();
 
       List<Assessment> assessments = member.assessments;
-      Logger.info("Rendering Dashboard " + member.getLatestAssessment() + "  " + member.getStartingweight());
+      Logger.info("Rendering Dashboard " + member);
       render("dashboard.html", member, assessments);
   }
 
@@ -29,7 +25,7 @@ public class Dashboard extends Controller
         Assessment assessment = new Assessment(weight, chest, thigh, upperarm, waist, hips);
          member.assessments.add(assessment);
         member.save();
-        Logger.info("Adding Assessment" + member.name);
+        Logger.info("Adding Assessment" + member);
         redirect("/dashboard");
 
     }
@@ -41,7 +37,7 @@ public class Dashboard extends Controller
         member.assessments.remove(assessment);
         member.save();
         assessment.delete();
-        Logger.info("Deleting " + member.name);
+        Logger.info("Deleting " + member);
         redirect("/dashboard");
 
     }

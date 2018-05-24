@@ -6,20 +6,23 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class Person extends Model{
-    public String email;
-    public String name;
-    public String address;
-    public String gender;
-    public String password;
+     String email;
+     String name;
+     String address;
+     String gender;
+     String password;
 
 
-    public Person(String name, String email, String address, String gender, String password) {
+
+    public Person(){}
+
+    public Person(String name, String email, String password) {
 
 
         this.name = name;
         this.email = email;
-        this.address = address;
-        this.gender = gender;
+        //this.address = address;
+        //this.gender = gender;
         this.password = password;
 
     }
