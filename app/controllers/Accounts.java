@@ -81,7 +81,7 @@ public class Accounts extends Controller
      * passes the member details to the view so the form can be pre-populated
      */
     public static void settings() {
-        Member member = (Member) Accounts.getLoggedInMember();
+        Member member = Accounts.getLoggedInMember();
         Logger.info(" Member " + Accounts.getLoggedInMember());
         render("settings.html", member);
     }
@@ -94,7 +94,7 @@ public class Accounts extends Controller
             float height,
             float startingweight) {
 
-        Member member = (Member) Accounts.getLoggedInMember();
+        Member member = Accounts.getLoggedInMember();
         // validate fields that were updated
         if (member != null) {
             if (name != null && !name.isEmpty()) member.setName(name);

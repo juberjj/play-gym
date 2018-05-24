@@ -76,7 +76,6 @@ public class Member extends Person
 
     public double getCurrentBmi() {
         if (assessments == null || assessments.isEmpty()) {
-           // return 0.0d;
             DecimalFormat df = new DecimalFormat("#.#");
             return Double.valueOf(df.format(GymUtility.calculateBMI(this)));
         }
