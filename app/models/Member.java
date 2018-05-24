@@ -1,6 +1,5 @@
 package models;
 
-import play.db.jpa.Model;
 import utils.GymUtility;
 
 import javax.persistence.CascadeType;
@@ -12,10 +11,6 @@ import java.util.*;
 @Entity
 public class Member extends Person
 {
-    //public String name;
-    //public String password;
-    //public String email;
-    //public String gender;
     private String gender;
     private String address;
     private float height;
@@ -23,17 +18,12 @@ public class Member extends Person
 
 
    @OneToMany(cascade = CascadeType.ALL)
-    //public List<Todo> todolist = new ArrayList<Todo>();
     public List<Assessment> assessments;
-   // private HashMap<String, Assessment> assessments;
 
     public Member(String name, String gender, String email, String password, String address, float height, float startingweight)
     {
         super(name, email, password);
-        //this.name = name;
         this.gender = gender;
-        //this.email = email;
-        //this.password = password;
         this.address = address;
         this.height = height;
         this.startingweight = startingweight;
@@ -174,14 +164,6 @@ public class Member extends Person
         this.assessments = assessments;
     }
 
-    /**
-     * Returns assessments performed by trainers.
-     *
-     * @return the map key will be the date (as string), the map values will be an assessment details
-     */
-//    public HashMap<String, Assessment> getAssessments() {
-//        return assessments;
-//    }
 
     /**
      * @param packageChoice Abstract method for chosen package. Specs mistake
@@ -189,17 +171,6 @@ public class Member extends Person
     //public abstract void chosenPackage(String chosenPackage);
     public void chosenPackage(String packageChoice){}
 
-    /**
-     * @return User-friendly String representing the current Member
-     */
-
-
-
-//    @Override
-//    public String toString() {
-//        return super.toString() + "/ Height: " + height + "m" + "/ Starting Weight: " + startWeight + "kg"
-//                + "/ Chosen Package: " + chosenPackage;
-//    }
 
 }
 
